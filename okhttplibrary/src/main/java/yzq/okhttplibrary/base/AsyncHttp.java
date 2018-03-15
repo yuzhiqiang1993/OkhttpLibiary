@@ -1,4 +1,4 @@
-package yzq.okhttplibrary;
+package yzq.okhttplibrary.base;
 
 import java.io.IOException;
 

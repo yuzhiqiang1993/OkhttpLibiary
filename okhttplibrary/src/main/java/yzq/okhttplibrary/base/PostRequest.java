@@ -1,13 +1,15 @@
-package yzq.okhttplibrary;
+package yzq.okhttplibrary.base;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import yzq.okhttplibrary.common.HeadersLogger;
 
 /**
  * Created by yzq on 2018/2/11.
@@ -43,8 +45,12 @@ public class PostRequest {
 
 
         /*请求对象*/
-        Request request = new Request.Builder().url(URL).post(formBody)
+         Request request = new Request.Builder().url(URL).post(formBody)
                 .build();
+
+
+
+        HeadersLogger.printHeaders(request.headers(),true);
 
         client.newCall(request)
                 .enqueue(new Callback() {
@@ -59,7 +65,14 @@ public class PostRequest {
                     public void onResponse(Call call, Response response) throws IOException {
 
                         if (response.isSuccessful()) {
+
+                            HeadersLogger.printHeaders(response.headers(),false);
+
+
                             System.out.println(response.body().string());
+
+
+
                         } else {
                             System.out.println(response);
                         }
@@ -67,4 +80,6 @@ public class PostRequest {
                 });
 
     }
+
+
 }
