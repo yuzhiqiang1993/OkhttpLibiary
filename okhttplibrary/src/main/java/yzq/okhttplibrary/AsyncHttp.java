@@ -59,7 +59,7 @@ public class AsyncHttp {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     System.out.println(response.body().string());
                 }
             }
