@@ -52,8 +52,7 @@ public class AsyncHttp {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
-
+                
             }
 
             @Override
